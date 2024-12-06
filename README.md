@@ -4,7 +4,9 @@
 1. Click on the green code button in top right corner of the page.
 
    ![screenshot](screenshot.png)
-3. 
+2. Under the https page copy the url
+
+   ![screenshot](screenshot2.png)
 
 ## Commands:
 
