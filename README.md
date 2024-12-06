@@ -2,8 +2,9 @@
 
 ## Installation:
 1. Click on the green code button in top right corner of the page.
+
    ![screenshot](screenshot.png)
-2. 
+3. 
 
 ## Commands:
 
