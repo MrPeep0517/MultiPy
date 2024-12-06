@@ -2,8 +2,11 @@
 
 ## Installation:
 1. Click on the green code button in top right corner of the page.
-   ![alt text](file:///C:/Users/mrpee/Pictures/Saved%20Pictures/Screenshot%202024-12-06%20075721.png)
-2. 
+
+   ![screenshot](screenshot.png)
+2. Under the https page copy the url
+
+   ![screenshot](screenshot2.png)
 
 ## Commands:
 
