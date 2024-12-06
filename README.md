@@ -1,12 +1,7 @@
 # PyMulti
 
 ## Installation:
-1. Click on the green code button in top right corner of the page.
-
-   ![screenshot](screenshot.png)
-2. Under the https page copy the url
-
-   ![screenshot](screenshot2.png)
+3. Type into terminal: ```git clone ```
 
 ## Commands:
 
