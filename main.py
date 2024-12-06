@@ -1,4 +1,4 @@
-print("\n             Welcome to the Python Multitool. :)\nYou can veiw the docs at: https://github.com/MrPeep0517/PyMulti")
+print("\nWelcome to the Python Multitool. :)\nYou can veiw the docs at: https://github.com/MrPeep0517/PyMulti")
 
 try:
     import datetime
@@ -15,6 +15,7 @@ num2 = 0
 num1 = 0
 operation = None
 
+
 def calc(num1, num2, operation):
     match operation:
         case "+":
@@ -29,6 +30,7 @@ def calc(num1, num2, operation):
             return factorial(num1)
         case "^":
             return num1 ** num2
+
 
 def main():
     while True:
@@ -133,5 +135,8 @@ def main():
                 if __name__ == "__main__":
                     pythonterm()
                     main()
+            case _:
+                print(f"Error:\n\t{cmd}\n\t{"^" * len(cmd)}\nCommandError: Command not found: \"{cmd}\"")
+
 
 main()
