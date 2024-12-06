@@ -1,4 +1,4 @@
-print("Welcome to the Python Multitool. :)\n")
+print("\n             Welcome to the Python Multitool. :)\nYou can veiw the docs at: https://github.com/MrPeep0517/PyMulti")
 
 try:
     import datetime
@@ -32,7 +32,7 @@ def calc(num1, num2, operation):
 
 def main():
     while True:
-        cmd = input("$> ")
+        cmd = input("$> ").lower()
         match cmd:
             case 'exit':
                 break
@@ -65,5 +65,73 @@ def main():
                 except:
                     print(f"factorial({num1}) = {calc(num1, 0, operation)}")
             case "clr":
-                os.system('clear')
+                os.system('cls')
+            case "py":
+                print("[green]PYTHON[green]")
+
+                import sys
+
+                indents = ["def", "if", "while", "for"]
+                oldCmds = []
+
+                def isindent(text):
+                    for indent in indents:
+                        if text.startswith(indent):
+                            return True
+                    return False
+
+                def seplist(list: list[str], sep=" ") -> str:
+                    things = ""
+                    for item in list:
+                        if item != list[-1]:
+                            things += (item + sep)
+                        else:
+                            things += item
+                    return things
+
+                def isvalidindent(text):
+                    try:
+                        exec(text + "\n    pass")
+                    except:
+                        return False
+                    else:
+                        return True
+
+                def pythonterm():
+                    oldCmds = []
+                    while True:
+                        pythonCmd = input(">>> ")
+                        if pythonCmd == "exit()":
+                            return 0
+                        try:
+                            pythonOut = eval(pythonCmd)
+                            if pythonOut != None:
+                                print(pythonOut)
+                        except:
+                            try:
+                                if isindent(pythonCmd):
+                                    if not isvalidindent(pythonCmd):
+                                        print(
+                                            f"SyntaxError: invalid syntax\n{pythonCmd} is not valid",
+                                            file=sys.stderr)
+                                    else:
+                                        oldCmds.append(pythonCmd)
+                                        while True:
+                                            if oldCmds[-1] == "" and pythonCmd == "":
+                                                exec(seplist(oldCmds, "\n"))
+                                                break
+                                            print("...", end=" ")
+                                            pythonCmd = input()
+                                            oldCmds.append(pythonCmd)
+                                else:
+                                    exec(pythonCmd)
+                            except Exception as e:
+                                print(
+                                    f"SyntaxError: invalid syntax\n{pythonCmd} is not valid",
+                                    file=sys.stderr)
+
+                if __name__ == "__main__":
+                    pythonterm()
+                    main()
+
 main()

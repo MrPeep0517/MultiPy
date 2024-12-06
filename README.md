@@ -2,12 +2,14 @@
 
 ## Commands:
 
-- Now:
+- ```Now```:
   - Prints out the current date and current time.
-- Calc
-  - Asks for 3 things; first number, operation (can be; +, -, *, /, f (factorial), and ^), and second number.
-- Quit/Exit
+- ```Calc```
+  - Asks for 3 things; first number, operation (can be; +, -, *, /, f (factorial), or ^), and second number.
+- ```Quit/Exit```
   - Stops the program.
+- ```Py```
+  - Runs the python console. Type ```exit()``` to return.
 
 
 ## TODO:
@@ -20,4 +22,4 @@
   - [x] Expon
   - [x] Factorial
 - [x] Add Now
-- [ ]
+- [x] Add Python Console
