@@ -1,7 +1,7 @@
 # PyMulti
 
 ## Installation:
-3. Type into terminal: ```git clone ```
+3. Type into terminal: ```git clone https://github.com/MrPeep0517/PyMulti.git```
 
 ## Commands:
 
