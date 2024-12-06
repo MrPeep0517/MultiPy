@@ -8,7 +8,7 @@ Type into terminal: ```git clone https://github.com/MrPeep0517/PyMulti.git```
 - ```Now```:
   - Prints out the current date and current time.
 - ```Calc```
-  - Asks for 3 things; first number, operation (can be; +, -, *, /, f (factorial), or ^), and second number.
+  - Asks for 3 things; first number, operation (can be; +, -, *, /, !, or ^), and second number.
 - ```Quit/Exit```
   - Stops the program.
 - ```Py```
