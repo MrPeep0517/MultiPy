@@ -1,7 +1,7 @@
-# PyMulti
+# MultiPy
 
 ## Installation:
-Type into terminal: ```git clone https://github.com/MrPeep0517/PyMulti.git```
+Type into terminal: ```git clone https://github.com/MrPeep0517/MultiPy.git```
 
 ## Commands:
 
