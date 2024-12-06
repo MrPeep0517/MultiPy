@@ -1,4 +1,4 @@
-print("\n\t\t\tWelcome to the Python Multitool. :)\nYou can veiw the docs at: https://github.com/MrPeep0517/PyMulti")
+print("\n\t\t\tWelcome to the Python Multitool. :)\nYou can veiw the docs at: https://github.com/MrPeep0517/MultiPy")
 
 try:
     import datetime
