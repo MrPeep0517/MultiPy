@@ -1,3 +1,5 @@
+print("Welcome to the Python Multitool. :)\n")
+
 try:
     import datetime
     from unittest import case
@@ -9,6 +11,9 @@ except ImportError as e:
     quit()
 
 num2_run = True
+num2 = 0
+num1 = 0
+operation = None
 
 def calc(num1, num2, operation):
     match operation:
