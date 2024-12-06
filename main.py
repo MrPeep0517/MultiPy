@@ -1,5 +1,3 @@
-print("Welcome to the Python Multitool. :)")
-
 try:
     import datetime
     from unittest import case
