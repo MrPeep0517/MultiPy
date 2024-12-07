@@ -85,21 +85,27 @@ def python():
         main()
 
 
-def calc(num1, num2, operation):
-    match operation:
-        case "+":
-            return num1 + num2
-        case "-":
-            return num1 - num2
-        case "*":
-            return num1 * num2
-        case "/":
-            return num1 / num2
-        case "!":
-            return factorial(num1)
-        case "^":
-            return num1 ** num2
-
+def calc(equation):
+    equation1 = list(equation)
+    try:
+        if equation1[2].isdigit():
+            equation1[2] = int(equation1[2])
+        if equation1[0].isdigit():
+            equation1[0] = int(equation1[0])
+        match equation1[1]:
+            case "+":
+                return equation1[0] + equation1[2]
+            case "-":
+                return equation1[0] - equation1[2]
+            case "*":
+                return equation1[0] * equation1[2]
+            case "/":
+                return equation1[0] / equation1[2]
+            case "^":
+                return equation1[0] ** equation1[2]
+    except IndexError:
+        equation1[0] = int(equation1[0])
+        return factorial(equation1[0])
 
 def main():
     while True:
@@ -112,35 +118,24 @@ def main():
             case "now":
                 print(datetime.datetime.now())
             case "calc":
-                num2_run = True
-                try:
-                    num1 = int(input("\t$> "))
-                except:
-                    print("[red]Error:\n\tnum1 = int(input(\"\\t$> \"))\n\t^^^^ ^ ^^^^^^^^^^^^^^^ ^^^\nValueError: Value must be an integer.[red]")
-                    continue
-                try:
-                    operation = input("\t$> ")
-                except:
-                    print("[red]Error:\n\toperation = input(\"\\t$> \")\n\t^^^^^^^^^ ^ ^^^^^^^^^^^^^^^ ^^\nValueError: Value must be an operation.[red]")
-                    continue
-                if operation == "!":
-                    num2_run = False
-                if num2_run:
-                    try:
-                        num2 = int(input("\t$> "))
-                    except:
-                        print("[red]Error:\n\tnum2 = int(input(\"\\t$> \"))\n\t^^^^ ^ ^^^^^^^^^^^^^^^ ^^^\nValueError: Value must be an integer.[red]")
-                        continue
-                try:
-                    print(f"{num1} {operation} {num2} = {calc(num1, num2, operation)}")
-                except:
-                    print(f"factorial({num1}) = {calc(num1, 0, operation)}")
+                print("\tPlease just put you equation into the raw input.")
             case "clr":
                 os.system('cls')
             case "py":
                 python()
             case _:
-                print(f"Error:\n\t{cmd}\n\t{"^" * len(cmd)}\nCommandError: Command not found: \"{cmd}\".")
+                try:
+                    cleaned_input = ""
+                    for char in cmd:
+                        if char != " ":
+                            cleaned_input += char
+                    answer = calc(cleaned_input)
+                    if answer != None:
+                        print(answer)
+                    else:
+                        raise Exception
+                except:
+                    print(f"Error:\n\t{cmd}\n\t{"^" * len(cmd)}\nCommandError: Command not found: \"{cmd}\".")
 
 
 main()

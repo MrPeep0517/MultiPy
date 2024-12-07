@@ -7,12 +7,12 @@ Type into terminal: ```git clone https://github.com/MrPeep0517/MultiPy.git```
 
 - ```Now```:
   - Prints out the current date and current time.
-- ```Calc```
-  - Asks for 3 things; first number, operation (can be; +, -, *, /, !, or ^), and second number.
 - ```Quit/Exit```
   - Stops the program.
 - ```Py```
   - Runs the python console. Type ```exit()``` to return.
+- Any Equation
+  - Prints out the answer to that equation. (Please put an ! after the number for factorial.)
 
 
 ## TODO:
