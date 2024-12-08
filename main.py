@@ -1,25 +1,23 @@
-print("\n\t\t\tWelcome to the Python Multitool. :)\nYou can veiw the docs at: https://github.com/MrPeep0517/MultiPy")
+print("\n\t\t\tWelcome to the Python Multitool. :)\nYou can view the docs at: https://github.com/MrPeep0517/MultiPy")
 
-try:
-    import datetime
-    from unittest import case
-    from rich import print
-    from math import factorial
-    import os
-except ImportError as e:
-    print(f"Sorry couldn't import {e}")
-    quit()
 
+import datetime
+from rich import print
+from math import factorial
+import os
+import sys
+
+RED = "\033[31m"
+RESET = "\033[0m"
 num2_run = True
 num2 = 0
 num1 = 0
 operation = None
 
 
-def python():
-    print("[green]PYTHON[green]")
-
-    import sys
+def python(cmd):
+    if not cmd:
+        print("[green]PYTHON[green]")
 
     indents = ["def", "if", "while", "for"]
     oldCmds = []
@@ -49,36 +47,44 @@ def python():
 
     def pythonterm():
         oldCmds = []
-        while True:
+        if cmd:
+            pythonCmd = cmd
+        else:
             pythonCmd = input(">>> ")
-            if pythonCmd == "exit()":
-                return 0
+        if pythonCmd == "exit()":
+            return 0
+        try:
+            pythonOut = eval(pythonCmd)
+            if pythonOut != None:
+                print(pythonOut)
+        except:
             try:
-                pythonOut = eval(pythonCmd)
-                if pythonOut != None:
-                    print(pythonOut)
-            except:
-                try:
-                    if isindent(pythonCmd):
-                        if not isvalidindent(pythonCmd):
+                if isindent(pythonCmd):
+                    if not isvalidindent(pythonCmd):
+                        if not cmd:
                             print(
                                 f"SyntaxError: invalid syntax\n{pythonCmd} is not valid",
                                 file=sys.stderr)
                         else:
-                            oldCmds.append(pythonCmd)
-                            while True:
-                                if oldCmds[-1] == "" and pythonCmd == "":
-                                    exec(seplist(oldCmds, "\n"))
-                                    break
-                                print("...", end=" ")
-                                pythonCmd = input()
-                                oldCmds.append(pythonCmd)
+                            raise Exception
                     else:
-                        exec(pythonCmd)
-                except Exception as e:
+                        oldCmds.append(pythonCmd)
+                        while True:
+                            if oldCmds[-1] == "" and pythonCmd == "":
+                                exec(seplist(oldCmds, "\n"))
+                                break
+                            print("...", end=" ")
+                            pythonCmd = input()
+                            oldCmds.append(pythonCmd)
+                else:
+                    exec(pythonCmd)
+            except Exception as e:
+                if not cmd:
                     print(
                         f"SyntaxError: invalid syntax\n{pythonCmd} is not valid",
                         file=sys.stderr)
+                else:
+                    raise Exception
 
     if __name__ == "__main__":
         pythonterm()
@@ -107,10 +113,13 @@ def calc(equation):
         equation1[0] = int(equation1[0])
         return factorial(equation1[0])
 
+
 def main():
     while True:
         cmd = input("$> ").lower()
         match cmd:
+            case 'help':
+                print("\tYou can view the docs at: https://github.com/MrPeep0517/MultiPy")
             case 'exit':
                 break
             case "quit":
@@ -121,21 +130,22 @@ def main():
                 print("\tPlease just put you equation into the raw input.")
             case "clr":
                 os.system('cls')
-            case "py":
-                python()
             case _:
                 try:
-                    cleaned_input = ""
-                    for char in cmd:
-                        if char != " ":
-                            cleaned_input += char
-                    answer = calc(cleaned_input)
-                    if answer != None:
-                        print(answer)
-                    else:
-                        raise Exception
+                    try:
+                        cleaned_input = ""
+                        for char in cmd:
+                            if char != " ":
+                                cleaned_input += char
+                        answer = calc(cleaned_input)
+                        if answer != None:
+                            print("\t" + answer)
+                        else:
+                            raise Exception
+                    except:
+                        print(python(cmd))
                 except:
-                    print(f"Error:\n\t{cmd}\n\t{"^" * len(cmd)}\nCommandError: Command not found: \"{cmd}\".")
+                    print(RED + f"Error:\n\t{cmd}\n\t{"^" * len(cmd)}\nCommandError: Command not found: \"{cmd}\"." + RESET)
 
 
 main()
