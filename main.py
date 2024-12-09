@@ -117,6 +117,10 @@ def calc(equation):
 def main():
     while True:
         cmd = input("$> ").lower()
+        if cmd == None:
+            py = False
+        else:
+            py = True
         match cmd:
             case 'help':
                 print("\tYou can view the docs at: https://github.com/MrPeep0517/MultiPy")
@@ -130,6 +134,10 @@ def main():
                 print("\tPlease just put you equation into the raw input.")
             case "clr":
                 os.system('cls')
+            case "":
+                continue
+            case "^l":
+                os.system("cls")
             case _:
                 try:
                     try:
@@ -141,11 +149,10 @@ def main():
                         if answer != None:
                             print("\t" + answer)
                         else:
-                            raise Exception
+                            raise TypeError
                     except:
                         print(python(cmd))
                 except:
                     print(RED + f"Error:\n\t{cmd}\n\t{"^" * len(cmd)}\nCommandError: Command not found: \"{cmd}\"." + RESET)
-
 
 main()

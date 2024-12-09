@@ -9,11 +9,12 @@ Type into terminal: ```git clone https://github.com/MrPeep0517/MultiPy.git```
   - Prints out the current date and current time.
 - ```Quit/Exit```
   - Stops the program.
-- ```Py```
-  - Runs the python console. Type ```exit()``` to return.
 - Any Equation
   - Prints out the answer to that equation. (Please put an ! after the number for factorial.)
-
+- Any Python Command
+  - Prints out the output.
+- ^L/Clr
+  - Clears the screen.
 
 ## TODO:
 
